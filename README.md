@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Speed Racer - Play Online</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5431940865562150" crossorigin="anonymous"></script>
     <style>
         body {
             margin: 0;
@@ -28,25 +29,16 @@
             color: #FF5722;
         }
         
-        /* Ad Spaces with Unit ID Labels */
+        /* Ad Spaces */
         .ad-container {
             width: 100%;
             margin: 5px auto;
             text-align: center;
-        }
-        
-        .ad-label {
-            color: #aaa;
-            font-size: 12px;
-            margin-bottom: 5px;
-        }
-        
-        .ad-unit {
-            background: #333;
-            color: #999;
-            padding: 10px;
-            border: 1px dashed #555;
-            margin: 0 auto;
+            min-height: 90px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
         /* Game Canvas */
@@ -122,24 +114,17 @@
         <div class="logo">SPEED RACER</div>
     </div>
     
-    <!-- Top Ad Unit with ID -->
+    <!-- Top Ad Unit -->
     <div class="ad-container">
-        <div class="ad-label">AD UNIT ID: TOP_BANNER_728x90</div>
-        <div class="ad-unit" style="width: 728px; height: 90px;">
-            <!-- Replace with actual AdSense code -->
-            <!-- Example: 
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUB_ID"
-                crossorigin="anonymous"></script>
-            <ins class="adsbygoogle"
-                style="display:inline-block;width:728px;height:90px"
-                data-ad-client="ca-pub-YOUR_PUB_ID"
-                data-ad-slot="YOUR_AD_SLOT_TOP"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-            -->
-            ADVERTISEMENT PLACEHOLDER (728x90)
-        </div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5431940865562150"
+             data-ad-slot="9157405292"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
     </div>
     
     <!-- Game Canvas -->
@@ -153,13 +138,17 @@
         <button id="startBtn">Start Game</button>
     </div>
     
-    <!-- Bottom Ad Unit with ID -->
+    <!-- Bottom Ad Unit -->
     <div class="ad-container">
-        <div class="ad-label">AD UNIT ID: BOTTOM_BANNER_728x90</div>
-        <div class="ad-unit" style="width: 728px; height: 90px;">
-            <!-- Replace with actual AdSense code -->
-            ADVERTISEMENT PLACEHOLDER (728x90)
-        </div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5431940865562150"
+             data-ad-slot="9157405292"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
     </div>
     
     <!-- Game Over Popup -->
@@ -315,6 +304,9 @@
             gameRunning = false;
             finalScoreElement.textContent = score;
             gameOverScreen.style.display = "flex";
+            
+            // Refresh ads on game over
+            (adsbygoogle = window.adsbygoogle || []).push({});
         }
         
         // Keyboard Controls
@@ -325,6 +317,9 @@
         window.addEventListener("keyup", (e) => {
             if (e.key in keys) keys[e.key] = false;
         });
+        
+        // Initialize ads
+        (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 </body>
 </html>
