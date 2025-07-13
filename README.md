@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orange Clicker Game</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5431940865562150" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -140,11 +141,36 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             margin-top: 20px;
         }
+        
+        .reset-btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        
+        .reset-btn:hover {
+            background-color: #ff5252;
+        }
     </style>
 </head>
 <body>
+    <!-- Top AdMob Banner -->
     <div class="ad-banner top-ad">
-        <div class="ad-content">ADVERTISEMENT SPACE - Try our new Orange Juice!</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5431940865562150"
+             data-ad-slot="5033810539"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
     </div>
     
     <div class="container">
@@ -162,17 +188,28 @@
         <div class="stats">
             <p>Total clicks: <span id="clicks">0</span></p>
             <p>Oranges per second: <span id="ops">0</span></p>
+            <button class="reset-btn" onclick="resetGame()">Reset Game</button>
         </div>
     </div>
     
+    <!-- Bottom AdMob Banner -->
     <div class="ad-banner bottom-ad">
-        <div class="ad-content">ADVERTISEMENT SPACE - Fresh Oranges Delivered to Your Door!</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5431940865562150"
+             data-ad-slot="5033810539"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
     </div>
 
     <script>
         let orangeCount = 1;
         let clickCount = 0;
         let orangesPerSecond = 0;
+        let movingOranges = [];
         
         function createOrange(clickedOrange) {
             clickCount++;
@@ -198,6 +235,7 @@
                 };
                 
                 document.body.appendChild(newOrange);
+                movingOranges.push(newOrange);
                 orangeCount++;
             }
             
@@ -207,12 +245,46 @@
             // Remove the clicked orange if it's not the original one
             if (!clickedOrange.parentElement.id === 'oranges') {
                 clickedOrange.remove();
+                const index = movingOranges.indexOf(clickedOrange);
+                if (index > -1) {
+                    movingOranges.splice(index, 1);
+                }
             }
             
             // Calculate oranges per second (simple version)
             if (clickCount > 1) {
                 orangesPerSecond = Math.round((orangeCount / clickCount) * 10);
                 document.getElementById('ops').textContent = orangesPerSecond;
+            }
+        }
+        
+        function resetGame() {
+            // Remove all moving oranges
+            movingOranges.forEach(orange => {
+                if (orange.parentNode) {
+                    orange.parentNode.removeChild(orange);
+                }
+            });
+            movingOranges = [];
+            
+            // Reset counters
+            orangeCount = 1;
+            clickCount = 0;
+            orangesPerSecond = 0;
+            
+            document.getElementById('count').textContent = orangeCount;
+            document.getElementById('clicks').textContent = clickCount;
+            document.getElementById('ops').textContent = orangesPerSecond;
+            
+            // Recreate the original orange if it's missing
+            const orangesContainer = document.getElementById('oranges');
+            if (orangesContainer.children.length === 0) {
+                const originalOrange = document.createElement('div');
+                originalOrange.className = 'orange';
+                originalOrange.onclick = function() {
+                    createOrange(this);
+                };
+                orangesContainer.appendChild(originalOrange);
             }
         }
         
@@ -225,6 +297,7 @@
                 originalOrange.style.left = '50%';
                 originalOrange.style.top = '50%';
                 originalOrange.style.animation = 'moveAround 8s linear infinite';
+                movingOranges.push(originalOrange);
             }
         }, 5000);
     </script>
