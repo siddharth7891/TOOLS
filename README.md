@@ -28,14 +28,25 @@
             color: #FF5722;
         }
         
-        /* Ad Spaces */
-        .ad {
+        /* Ad Spaces with Unit ID Labels */
+        .ad-container {
+            width: 100%;
+            margin: 5px auto;
+            text-align: center;
+        }
+        
+        .ad-label {
+            color: #aaa;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        
+        .ad-unit {
             background: #333;
             color: #999;
-            text-align: center;
             padding: 10px;
-            margin: 5px auto;
             border: 1px dashed #555;
+            margin: 0 auto;
         }
         
         /* Game Canvas */
@@ -111,9 +122,24 @@
         <div class="logo">SPEED RACER</div>
     </div>
     
-    <!-- Top Ad -->
-    <div class="ad" style="width: 728px; height: 90px;">
-        ADVERTISEMENT (728x90)
+    <!-- Top Ad Unit with ID -->
+    <div class="ad-container">
+        <div class="ad-label">AD UNIT ID: TOP_BANNER_728x90</div>
+        <div class="ad-unit" style="width: 728px; height: 90px;">
+            <!-- Replace with actual AdSense code -->
+            <!-- Example: 
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUB_ID"
+                crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                style="display:inline-block;width:728px;height:90px"
+                data-ad-client="ca-pub-YOUR_PUB_ID"
+                data-ad-slot="YOUR_AD_SLOT_TOP"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            -->
+            ADVERTISEMENT PLACEHOLDER (728x90)
+        </div>
     </div>
     
     <!-- Game Canvas -->
@@ -127,9 +153,13 @@
         <button id="startBtn">Start Game</button>
     </div>
     
-    <!-- Bottom Ad -->
-    <div class="ad" style="width: 728px; height: 90px;">
-        ADVERTISEMENT (728x90)
+    <!-- Bottom Ad Unit with ID -->
+    <div class="ad-container">
+        <div class="ad-label">AD UNIT ID: BOTTOM_BANNER_728x90</div>
+        <div class="ad-unit" style="width: 728px; height: 90px;">
+            <!-- Replace with actual AdSense code -->
+            ADVERTISEMENT PLACEHOLDER (728x90)
+        </div>
     </div>
     
     <!-- Game Over Popup -->
